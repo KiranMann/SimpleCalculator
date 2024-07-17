@@ -26,4 +26,6 @@ COPY nginx.conf /etc/nginx/conf.d
 EXPOSE 8080
 
 # Run Nginx and Gunicorn using a shell command
-CMD ["sh", "-c", "service nginx start && gunicorn -w 4 -b 0.0.0.0:8080 app:app --timeout 120"]
+# CMD ["sh", "-c", "service nginx start && gunicorn -w 4 -b 0.0.0.0:8080 app:app --timeout 120"]
+# Command to run the application
+CMD ["python", "app.py"]
