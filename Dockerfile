@@ -22,8 +22,8 @@ RUN rm /etc/nginx/sites-enabled/default
 # Copy the Nginx configuration file to the container
 COPY nginx.conf /etc/nginx/conf.d
 
-# Expose port 80
-EXPOSE 80
+# Expose the ports the app runs on
+EXPOSE 8080
 
-# Run the command to start Nginx and Gunicorn
-CMD service nginx start && gunicorn -w 4 -b 0.0.0.0:8000 app:app --timeout 120
+# Run Nginx and Gunicorn using a shell command
+CMD ["sh", "-c", "service nginx start && gunicorn -w 4 -b 0.0.0.0:8080 app:app --timeout 120"]
